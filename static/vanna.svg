@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<linearGradient gradientTransform="matrix(1.09331 0 0 1.09331 -47.1838 -88.8946)" gradientUnits="userSpaceOnUse" id="LinearGradient" x1="237.82" x2="785.097" y1="549.609" y2="549.609">
+<stop offset="0" stop-color="#009efd"/>
+<stop offset="1" stop-color="#2af598"/>
+</linearGradient>
+</defs>
+<g id="Layer-1" vectornator:layerName="Layer 1">
+<g opacity="1" vectornator:layerName="Group 1">
+<path d="M117.718 228.798C117.718 119.455 206.358 30.8151 315.701 30.8151L708.299 30.8151C817.642 30.8151 906.282 119.455 906.282 228.798L906.282 795.202C906.282 904.545 817.642 993.185 708.299 993.185L315.701 993.185C206.358 993.185 117.718 904.545 117.718 795.202L117.718 228.798Z" fill="#0f172a" fill-rule="nonzero" opacity="1" stroke="#374151" stroke-linecap="butt" stroke-linejoin="round" stroke-width="20" vectornator:layerName="Rectangle 1"/>
+<path d="M212.828 215.239C213.095 281.169 213.629 413.028 213.629 413.028C213.629 413.028 511.51 808.257 513.993 809.681C612.915 677.809 810.759 414.065 810.759 414.065C810.759 414.065 811.034 280.901 811.172 214.319C662.105 362.973 662.105 362.973 513.038 511.627C362.933 363.433 362.933 363.433 212.828 215.239Z" fill="url(#LinearGradient)" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</g>
+</svg>
