@@ -169,9 +169,9 @@ def add_training_data():
         return jsonify({"type": "error", "error": str(e)})
 
 @app.route('/api/v0/generate_followup_questions', methods=['GET'])
-@requires_cache(['df', 'question'])
-def generate_followup_questions(id: str, df, question):
-    followup_questions = vn.generate_followup_questions(question=question, df=df)
+@requires_cache(['df', 'question', 'sql'])
+def generate_followup_questions(id: str, df, question, sql):
+    followup_questions = vn.generate_followup_questions(question=question, sql=sql, df=df)
 
     cache.set(id=id, field='followup_questions', value=followup_questions)
 
