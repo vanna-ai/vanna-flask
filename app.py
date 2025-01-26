@@ -1,4 +1,9 @@
+import boto3
 from dotenv import load_dotenv
+from qdrant_client import QdrantClient
+from vanna.bedrock import Bedrock_Converse
+from vanna.qdrant import Qdrant_VectorStore
+
 load_dotenv()
 
 from functools import wraps
@@ -14,17 +19,31 @@ cache = MemoryCache()
 
 # from vanna.local import LocalContext_OpenAI
 # vn = LocalContext_OpenAI()
+QDRANT_HOST = "qdrant.databases.svc.cluster.local"
+BEDROCK_MODEL_ID = "meta.llama3-70b-instruct-v1:0"
+qdrant_client = QdrantClient(host=QDRANT_HOST, port=6333)
+bedrock_client = boto3.client('s3')
 
-from vanna.remote import VannaDefault
-vn = VannaDefault(model=os.environ['VANNA_MODEL'], api_key=os.environ['VANNA_API_KEY'])
 
-vn.connect_to_snowflake(
-    account=os.environ['SNOWFLAKE_ACCOUNT'],
-    username=os.environ['SNOWFLAKE_USERNAME'],
-    password=os.environ['SNOWFLAKE_PASSWORD'],
-    database=os.environ['SNOWFLAKE_DATABASE'],
-    warehouse=os.environ['SNOWFLAKE_WAREHOUSE'],
-)
+class MyVanna(Qdrant_VectorStore, Bedrock_Converse):
+    def __init__(self):
+        Qdrant_VectorStore.__init__(self, config={
+            "client": qdrant_client,
+        })
+        Bedrock_Converse.__init__(self, bedrock_client, {
+            "modelId": BEDROCK_MODEL_ID,
+        })
+
+
+vn = MyVanna()
+
+# vn.connect_to_snowflake(
+#     account=os.environ['SNOWFLAKE_ACCOUNT'],
+#     username=os.environ['SNOWFLAKE_USERNAME'],
+#     password=os.environ['SNOWFLAKE_PASSWORD'],
+#     database=os.environ['SNOWFLAKE_DATABASE'],
+#     warehouse=os.environ['SNOWFLAKE_WAREHOUSE'],
+# )
 
 # NO NEED TO CHANGE ANYTHING BELOW THIS LINE
 def requires_cache(fields):
@@ -210,4 +229,4 @@ def root():
     return app.send_static_file('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001, host='0.0.0.0')
